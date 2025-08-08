@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Raksha Bandhan — From Raushan to all my sister ☺</title>
+<meta name="description" content="Happy Raksha Bandhan " />
+<style>
+  :root{
+    --bg1:#08030a;
+    --bg2:#1a0b0f;
+    --gold:#f5c242;
+    --maroon:#8b0f13;
+    --glass:rgba(255,255,255,0.03);
+    --text:#fff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: radial-gradient(800px 400px at 10% 10%, #1c0e12 0%, var(--bg1) 20%, var(--bg2) 80%);
+    color:var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+  }
+
+  /* Card */
+  .card{
+    width:min(980px,96%);
+    max-width:1100px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:18px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    box-shadow: 0 20px 60px rgba(5,4,8,0.7);
+  }
+
+  /* Ribbon */
+  .ribbon{
+    position:absolute;
+    left:-20%;
+    top:8%;
+    width:140%;
+    height:36px;
+    pointer-events:none;
+    transform:skewX(-16deg);
+  }
+  .ribbon::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(90deg,var(--maroon), #ff6f45);
+    opacity:0.95;
+    filter:blur(0.4px);
+    animation:slideRibbon 7s linear infinite;
+  }
+  @keyframes slideRibbon{
+    0%{transform:translateX(-40%)}
+    50%{transform:translateX(0)}
+    100%{transform:translateX(40%)}
+  }
+
+  /* Header area */
+  .hero{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .logo-wrap{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+  .rakhi-svg{width:84px;height:84px;flex:0 0 84px;filter:drop-shadow(0 8px 20px rgba(0,0,0,0.6))}
+  .title-area{flex:1;min-width:260px}
+  .title{
+    margin:0;
+    font-size:40px;
+    line-height:1;
+    font-weight:900;
+    letter-spacing:0.6px;
+    background:linear-gradient(90deg,var(--gold), #ffb85c 60%, #ffdca6 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:
+      0 2px 0 rgba(0,0,0,0.45),
+      0 8px 30px rgba(245,194,66,0.12);
+    transform-origin:center;
+    animation:enterTitle 900ms cubic-bezier(.2,.9,.2,1);
+  }
+  @keyframes enterTitle{
+    from{opacity:0;transform:translateY(-14px) scale(.98)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+  .subtitle{
+    margin:8px 0 0;
+    color:#e9dccc;
+    opacity:0.95;font-size:15px;
+  }
+
+  /* Controls */
+  .controls{display:flex;gap:10px;align-items:center;margin-left:auto}
+  .control-btn{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04);
+    color:var(--text);
+    padding:10px 12px;border-radius:10px;cursor:pointer;font-weight:700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  }
+  .control-btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);opacity:0.95}
+
+  /* Decorative small rakhi - animated */
+  .small-rakhi{width:54px;height:54px;flex:0 0 54px;animation:float 4s ease-in-out infinite}
+  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+  /* Footer personal line */
+  .from-line{margin-top:18px;text-align:center;color:#f3e6cf;font-weight:700;font-size:15px;letter-spacing:0.3px}
+
+  /* Full-screen layers (canvas) */
+  canvas{position:fixed;inset:0;pointer-events:none;z-index:20}
+
+  /* Responsive */
+  @media (max-width:720px){
+    .title{font-size:26px}
+    .rakhi-svg{width:64px;height:64px}
+    .controls{width:100%;justify-content:flex-start;margin-top:12px}
+  }
+</style>
+</head>
+<body>
+  <div class="card" role="main" aria-label="Raksha Bandhan Celebration Card">
+    <div class="ribbon" aria-hidden></div>
+
+    <div class="hero">
+      <div class="logo-wrap" aria-hidden>
+        <!-- Decorative inline SVG rakhi -->
+        <svg class="rakhi-svg" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <defs>
+            <radialGradient id="rg" cx="30%" cy="30%" r="80%">
+              <stop offset="0%" stop-color="#fff6e6"/>
+              <stop offset="100%" stop-color="#ffd9b2"/>
+            </radialGradient>
+            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <circle cx="64" cy="64" r="36" fill="url(#rg)" stroke="#b65a2a" stroke-width="6" filter="url(#glow)"/>
+          <g transform="translate(64 64)">
+            <circle r="18" fill="#ffd9a6" stroke="#8b3a20" stroke-width="3"/>
+            <text x="0" y="6" text-anchor="middle" font-size="12" font-weight="800" fill="#7b2a18" font-family="Inter, sans-serif">रक्षा</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="title-area">
+        <h1 class="title">Happy Raksha Bandhan</h1>
+        <p class="subtitle">Wishing you love, protection and endless smiles — celebrate this special bond.</p>
+      </div>
+
+      <div class="controls" role="group" aria-label="Music and celebration controls">
+        <button id="playBtn" class="control-btn" aria-pressed="false">Play Music ▶</button>
+        <button id="burstBtn" class="control-btn secondary">Burst Confetti ✨</button>
+      </div>
+    </div>
+
+    <div class="from-line"> created by Raushan Mishra   ❤️</div>
+  </div>
+
+  <!-- CANVASES for petals/confetti/particles -->
+  <canvas id="petalsCanvas" aria-hidden></canvas>
+  <canvas id="confettiCanvas" aria-hidden></canvas>
+
+<script>
+/* -------------------------
+   Canvas setup & resize
+   ------------------------- */
+const petals = document.getElementById('petalsCanvas');
+const confetti = document.getElementById('confettiCanvas');
+const pctx = petals.getContext('2d');
+const cctx = confetti.getContext('2d');
+
+function resize(){
+  const w = innerWidth, h = innerHeight;
+  [petals, confetti].forEach(c=>{c.width = w; c.height = h});
+}
+resize();
+addEventListener('resize', resize);
+
+/* -------------------------
+   Petals (gentle float)
+   ------------------------- */
+const petalArr = [];
+function makePetal(){
+  return {
+    x: Math.random()*innerWidth,
+    y: -20 - Math.random()*200,
+    w: 8 + Math.random()*14,
+    h: 12 + Math.random()*18,
+    vx: (Math.random()-0.5)*0.6,
+    vy: 0.6 + Math.random()*1.2,
+    rot: Math.random()*Math.PI,
+    rotSpeed: (Math.random()-0.5)*0.06,
+    alpha: 0.9 - Math.random()*0.4
+  };
+}
+for(let i=0;i<20;i++) petalArr.push(makePetal());
+
+function drawPetals(){
+  pctx.clearRect(0,0,petals.width,petals.height);
+  petalArr.forEach(p=>{
+    p.x += p.vx; p.y += p.vy; p.rot += p.rotSpeed;
+    if(p.y > innerHeight + 40){ Object.assign(p, makePetal()); p.y = -60; }
+    pctx.save();
+    pctx.translate(p.x, p.y);
+    pctx.rotate(Math.sin(p.rot) * 0.6);
+    pctx.beginPath();
+    pctx.ellipse(0, 0, p.w*0.6, p.h, 0, 0, Math.PI*2);
+    pctx.fillStyle = `rgba(255,190,160,${p.alpha})`;
+    pctx.fill();
+    pctx.restore();
+  });
+  requestAnimationFrame(drawPetals);
+}
+drawPetals();
+
+/* -------------------------
+   Confetti (burst & slow rain)
+   ------------------------- */
+let confettiPieces = [];
+function spawnConfetti(x,y,count=80){
+  for(let i=0;i<count;i++){
+    confettiPieces.push({
+      x, y,
+      vx: (Math.random()-0.5)*8,
+      vy: - (Math.random()*8 + 2),
+      r: 6 + Math.random()*8,
+      rot: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*12,
+      color: `hsl(${Math.random()*40 + 10},90%,60%)`,
+      life: 90 + Math.floor(Math.random()*80)
+    });
+  }
+}
+
+function drawConfetti(){
+  cctx.clearRect(0,0,confetti.width,confetti.height);
+  confettiPieces.forEach((p,i)=>{
+    p.vy += 0.35; p.x += p.vx; p.y += p.vy; p.rot += p.rotSpeed*0.02; p.life--;
+    cctx.save();
+    cctx.translate(p.x,p.y);
+    cctx.rotate(p.rot * Math.PI/180);
+    cctx.fillStyle = p.color;
+    cctx.fillRect(-p.r/2, -p.r/2, p.r, p.r);
+    cctx.restore();
+  });
+  confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < innerHeight + 80);
+  // small continuous slow fall
+  if(Math.random() < 0.02){
+    spawnConfetti(Math.random()*innerWidth, -10, 6);
+  }
+  requestAnimationFrame(drawConfetti);
+}
+drawConfetti();
+
+/* Hook burst button */
+document.getElementById('burstBtn').addEventListener('click', ()=>{
+  spawnConfetti(innerWidth/2, innerHeight/3, 160);
+});
+
+/* small auto burst on load */
+setTimeout(()=> spawnConfetti(innerWidth/2, innerHeight/3, 40), 700);
+
+/* -------------------------
+   WebAudio gentle loop (no external file)
+   ------------------------- */
+let audioCtx = null;
+let masterGain = null;
+let isPlaying = false;
+let synthTimer = null;
+
+function startMusic(){
+  if(isPlaying) return;
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  audioCtx = new AudioContext();
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = 0.06;
+  masterGain.connect(audioCtx.destination);
+
+  // simple arpeggio using oscillators + reverb-like delay
+  const notes = [261.63, 329.63, 392.00, 523.25]; // C4,E4,G4,C5
+  let idx = 0;
+
+  function scheduleNote(){
+    const now = audioCtx.currentTime;
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(notes[idx % notes.length], now);
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(1, now + 0.02);
+    g.gain.linearRampToValueAtTime(0, now + 1.6);
+    o.connect(g);
+    g.connect(masterGain);
+
+    // subtle filter
+    const f = audioCtx.createBiquadFilter();
+    f.type = 'lowpass'; f.frequency.value = 1200;
+    g.connect(f); f.connect(masterGain);
+
+    o.start(now);
+    o.stop(now + 1.65);
+    idx++;
+    synthTimer = setTimeout(scheduleNote, 1600);
+  }
+  isPlaying = true;
+  scheduleNote();
+}
+
+function stopMusic(){
+  if(!isPlaying) return;
+  isPlaying = false;
+  if(synthTimer) clearTimeout(synthTimer);
+  if(audioCtx){
+    audioCtx.close().catch(()=>{});
+    audioCtx = null;
+  }
+}
+
+/* Play button */
+const playBtn = document.getElementById('playBtn');
+playBtn.addEventListener('click', async ()=>{
+  // Resume AudioContext on user gesture (browser requirement)
+  if(!isPlaying){
+    try{
+      startMusic();
+      playBtn.textContent = 'Stop Music ⏸';
+      playBtn.setAttribute('aria-pressed','true');
+    }catch(e){
+      // fallback: inform user
+      alert('Audio unavailable in this browser.');
+    }
+  } else {
+    stopMusic();
+    playBtn.textContent = 'Play Music ▶';
+    playBtn.setAttribute('aria-pressed','false');
+  }
+});
+
+/* Accessibility: keyboard triggers */
+playBtn.addEventListener('keyup', e => { if(e.key === 'Enter' || e.key === ' ') playBtn.click(); });
+document.getElementById('burstBtn').addEventListener('keyup', e => { if(e.key === 'Enter' || e.key === ' ') document.getElementById('burstBtn').click(); });
+
+</script>
+</body>
+</html>
